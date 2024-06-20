@@ -1,34 +1,17 @@
-import path from 'path';
-import fs from 'fs';
-import _ from 'lodash';
+import parse from './parsers.js';
+import { getFormat, readFile } from './utils.js';
+import buildTree from './buildTree.js';
+import formatter from './formatter/index.js';
 
-const readFile = (filepath) => {
-  const pathF = path.resolve(process.cwd(), filepath);
-  return JSON.parse(fs.readFileSync(pathF, 'utf-8'));
+// eslint-disable-next-line no-unused-vars
+const genDiff = (filePath1, filePath2, format = 'stylish') => {
+  const file1 = readFile(filePath1);
+  const file2 = readFile(filePath2);
+
+  const obj1 = parse(file1, getFormat(filePath1));
+  const obj2 = parse(file2, getFormat(filePath2));
+
+  const tree = buildTree(obj1, obj2);
+  return formatter(tree, format);
 };
-
-const gendiff = (filepath1, filepath2) => {
-  const data1 = readFile(filepath1);
-  const data2 = readFile(filepath2);
-
-  const keys = _.union(_.keys(data1), _.keys(data2)).sort();
-  const diffObj = keys.map((key) => {
-    if (_.has(data1, key) && !_.has(data2, key)) {
-      return `  - ${key}: ${data1[key]}`;
-    }
-
-    if (_.has(data2, key) && !_.has(data1, key)) {
-      return `  + ${key}: ${data2[key]}`;
-    }
-
-    if (data1[key] !== data2[key]) {
-      return `  - ${key}: ${data1[key]}\n  + ${key}: ${data2[key]}`;
-    }
-
-    return `    ${key}: ${data1[key]}`;
-  });
-
-  return `{\n${diffObj.join('\n')}\n}`;
-};
-
-export default gendiff;
+export default genDiff;
