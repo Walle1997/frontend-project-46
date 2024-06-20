@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "type": "module",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/Walle1997/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Walle1997/frontend-project-46/actions)",
+  "description": "Вычислитель отличий - программа, предназначенная для определения разницы между двумя структурами данных.[![Actions Status](https://github.com/Walle1997/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Walle1997/frontend-project-46/actions)",
   "main": "index.js",
   "bin": {
     "gendiff": "bin/gendiff.js"
