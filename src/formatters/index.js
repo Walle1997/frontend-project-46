@@ -1,16 +1,12 @@
-import getStylish from './stylish.js';
-import plain from './plain.js';
-import json from './json.js';
+import plain from './plainFormat.js';
+import stylish from './stylishFormat.js';
+import jsonFormat from './jsonFormat.js';
 
-export default (data, format) => {
-  switch (format) {
-    case 'stylish':
-      return getStylish(data);
-    case 'plain':
-      return plain(data);
-    case 'json':
-      return json(data);
-    default:
-      throw new Error(`Unknown ${format}.`);
-  }
+const formatters = {
+  plain,
+  stylish,
+  json: jsonFormat,
 };
+
+const formatter = (ast, format) => formatters[format](ast);
+export default formatter;

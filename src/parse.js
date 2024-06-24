@@ -1,15 +1,23 @@
-import YAML from 'yaml';
+import path from 'path';
+import yaml from 'js-yaml';
+import fs from 'fs';
 
-const parsing = {
+const getFullPath = (filepath) => path.resolve(process.cwd(), filepath);
+
+const extractFileFormat = (filepath) => path.extname(filepath).slice(1);
+
+const getData = (filepath) => fs.readFileSync(getFullPath(filepath), 'utf-8');
+
+const parsers = {
   json: JSON.parse,
-  yaml: YAML.parse,
-  yml: YAML.parse,
+  yaml: yaml.load,
+  yml: yaml.load,
 };
 
-export default (filepath, ext) => {
-  try {
-    return parsing[ext](filepath);
-  } catch (error) {
-    throw new Error(`Unknown format ${ext}!`);
-  }
+const parse = (filepath) => {
+  const data = getData(filepath);
+  const format = extractFileFormat(filepath);
+  return parsers[format](data);
 };
+
+export default parse;
