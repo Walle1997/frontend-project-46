@@ -18,12 +18,5 @@
 
 ## Utility reference information:
 
-<a href="https://asciinema.org/a/QxvIbrfPuTm3VflMpUrH8gY14" target="_blank"><img src="https://asciinema.org/a/QxvIbrfPuTm3VflMpUrH8gY14.svg" /></a>
+<a href="https://asciinema.org/a/HHmGA63HqZBl54PgW6rqy3VpW" target="_blank"><img src="https://asciinema.org/a/HHmGA63HqZBl54PgW6rqy3VpW.svg" /></a>
 
-## Asciinema for two-yaml-files comparison
-
-<a href="https://asciinema.org/a/20RHOSN51XvGdZWAGEkrlKs0S" target="_blank"><img src="https://asciinema.org/a/20RHOSN51XvGdZWAGEkrlKs0S.svg" /></a>
-
-<a href="https://asciinema.org/a/Bhqnek1AD1oGjIxfEZdkYbb0t" target="_blank"><img src="https://asciinema.org/a/Bhqnek1AD1oGjIxfEZdkYbb0t.svg" /></a>
-
-<a href="https://asciinema.org/a/L5B0hFLlAIDxzHqhVzI2Z5sqB" target="_blank"><img src="https://asciinema.org/a/L5B0hFLlAIDxzHqhVzI2Z5sqB.svg" /></a>
