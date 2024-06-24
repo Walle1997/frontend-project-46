@@ -5,8 +5,22 @@
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5b9f743e398804c9d2ba/test_coverage)](https://codeclimate.com/github/Walle1997/frontend-project-46/test_coverage)
 
+## Welcome to gendiff application!
+
+## Clone this repository at first
+
+## Install it with ```install```
+
+## make ```npm link``` from root directory
+
+## Run application with
+```gendiff -h ```
+
+## Utility reference information:
+
 <a href="https://asciinema.org/a/QxvIbrfPuTm3VflMpUrH8gY14" target="_blank"><img src="https://asciinema.org/a/QxvIbrfPuTm3VflMpUrH8gY14.svg" /></a>
 
+## Asciinema for two-yaml-files comparison
 
 <a href="https://asciinema.org/a/20RHOSN51XvGdZWAGEkrlKs0S" target="_blank"><img src="https://asciinema.org/a/20RHOSN51XvGdZWAGEkrlKs0S.svg" /></a>
 
