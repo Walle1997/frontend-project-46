@@ -11,12 +11,12 @@
 
 # 1. Скопируйте данный репозиторий локально
 
-# Команда SSH
+### Команда SSH
 ```
 git clone git@github.com:Walle1997/frontend-project-46.git
 ```
 
-# Команда HTTP
+### Команда HTTP
 ```
 git clone https://github.com/Walle1997/frontend-project-46.git
 ```
