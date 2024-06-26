@@ -1,35 +1,29 @@
-# Name of workflow
-name: CI
- 
+name: Java CI
+
 on:
   - push
- 
-env:
-  CI: true
- 
+  - pull_request
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Check-out repository
-        uses: actions/checkout@v3
- 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
         with:
-          node-version: 18
-          cache: 'npm'
- 
-      - name: Install, lint & test project
-        run: |
-          make install
-          make lint
-          make test
- 
-      - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v4.0.0
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          java-version: '21'
+          distribution: 'Farid'
+      - uses: gradle/gradle-build-action@v3
         with:
-          coverageCommand: make test-coverage
-          debug: true
+          gradle-version: 8.7
+      - run: ./gradlew checkstyleMain
+      - run: ./gradlew test
+      - name: Publish code coverage
+         uses: paambaati/codeclimate-action@v5.0.0
+         env:
+           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+           JACOCO_SOURCE_PATH: app/src/main/java
+         with:
+           coverageCommand: make test-coverage
+           coverageLocations: ${{github.workspace}}/app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
