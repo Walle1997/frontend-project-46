@@ -1,4 +1,4 @@
-name: Java CI
+name: Test_gendiff
 
 on:
   - push
@@ -9,21 +9,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v1
         with:
-          java-version: '21'
-          distribution: 'Farid'
-      - uses: gradle/gradle-build-action@v3
+          node-version: 18.14.0
+      - run: npm  install
+      - run: make lint
+      - name: run tests
+        run: npm test
+      - uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          gradle-version: 8.7
-      - run: ./gradlew checkstyleMain
-      - run: ./gradlew test
-      - name: Publish code coverage
-         uses: paambaati/codeclimate-action@v5.0.0
-         env:
-           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
-           JACOCO_SOURCE_PATH: app/src/main/java
-         with:
-           coverageCommand: make test-coverage
-           coverageLocations: ${{github.workspace}}/app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
+          coverageCommand: make test-coverage
+          debug: true
